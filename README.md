@@ -1,6 +1,31 @@
 # 8266-sd1306
 Sample micropython working code to use the SD1306 display 
 
+## User requirements
+- Able to write simple micropython code
+- Have working development environment to upload code to device
+- Patience to read documents (not just this one)
+
+## Installation
+- Use your favourite uploader for the job; no specific requirements. I use pymakr extension on Visual Studio Code.
+- Reboot
+
+## Compile your own module
+- Download the micropython git repo to your Linux machine (Debian tested supported).
+- Compile [mpy-cross](https://github.com/micropython/micropython/tree/master/mpy-cross)
+~~~sh
+cd mpy-cross
+make
+~~~
+- Compile any module you like. 'xtensa' is the architecture for ESP8266. Some fonts are available [here](https://github.com/peterhinch/micropython-font-to-py/tree/master/writer) for compiling.
+~~~sh
+mpy-cross -march=xtensa <module.py>
+~~~
+
+## Technical config/ specs
+- SDA = GPIO02
+- SCL = GPIO14
+- OLED pixels (width x height) = 128 x 64
 
 ## References
 - Hardware
