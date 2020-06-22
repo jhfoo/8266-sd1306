@@ -23,9 +23,9 @@ mpy-cross -march=xtensa <module.py>
 ~~~
 
 ## Technical config/ specs
-SDA = GPIO02
-SCL = GPIO14
-OLED pixels (width x height) = 128 x 64
+- SDA = GPIO02
+- SCL = GPIO14
+- OLED pixels (width x height) = 128 x 64
 
 ## References
 - Hardware
