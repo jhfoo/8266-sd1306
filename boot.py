@@ -3,16 +3,18 @@ from machine import Pin, Timer
 import ssd1306
 import font6
 from writer import Writer
-
+import util
 
 OLED_WIDTH = 128
 OLED_HEIGHT = 64
 PinScl = Pin(14)
 PinSda = Pin(2)
+BattLevel = 1
 
 def page2(tim):
     tim.deinit()
     oled.fill(0)
+
     Writer.set_textpos(oled, 15, 0)
     wrtr.printstring("Line 2y")
     Writer.set_textpos(oled, 30, 0)
@@ -38,6 +40,18 @@ def page5(tim):
 def page6(tim):
     oled.poweroff()
 
+def BatteryPage(tim):
+    global BattLevel
+    oled.fill(0)
+    icon = util.loadImage('icons/battery' + str(BattLevel) + '4.pbm')
+    oled.blit(icon, 100,0)
+    oled.show()
+    if (BattLevel < 4):
+        BattLevel += 1
+        tim.init(period=1 * 1000, mode=Timer.ONE_SHOT, callback=BatteryPage)
+    else:
+        tim.init(period=1 * 1000, mode=Timer.ONE_SHOT, callback=page2)
+        
 i2c = machine.I2C(-1, PinScl, PinSda)
 print ('')
 print (i2c.scan())
@@ -47,4 +61,4 @@ Writer.set_textpos(oled, 0, 0)
 wrtr.printstring("Hello World!")
 oled.show()
 tim = Timer(-1)
-tim.init(period=3 * 1000, mode=Timer.ONE_SHOT, callback=page2)
+tim.init(period=3 * 1000, mode=Timer.ONE_SHOT, callback=BatteryPage)
