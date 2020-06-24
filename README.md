@@ -39,3 +39,4 @@ mpy-cross -march=xtensa <module.py>
   - [SSD1306 driver module](https://github.com/micropython/micropython/blob/master/drivers/display/ssd1306.py)
   - [MicroPython cross compiler](https://github.com/micropython/micropython/tree/master/mpy-cross)
   - [Micropython I2C class](https://docs.micropython.org/en/latest/library/machine.I2C.html)
+  - [MicroPython and the Internet of Things, Part VI: Working with a Screen](https://blog.miguelgrinberg.com/post/micropython-and-the-internet-of-things-part-vi-working-with-a-screen)
